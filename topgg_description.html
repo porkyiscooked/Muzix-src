@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzix - Top.gg Description</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d4d;
+            --secondary: #ff1a1a;
+            --bg: #ffffff;
+            --text: #333333;
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow: 0 8px 32px 0 rgba(255, 77, 77, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Glassmorphism Navbar */
+        nav {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            height: 60px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 20px;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+            scroll-margin-top: 100px;
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+        }
+
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .command-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 77, 77, 0.1);
+            border-color: var(--primary);
+        }
+
+        .command-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .command-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: #fff5f5;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+        .command-description {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--secondary);
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                width: 95%;
+                overflow-x: auto;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+            nav a {
+                white-space: nowrap;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#playback">Playback</a>
+        <a href="#queue">Queue</a>
+        <a href="#favorites">Favorites</a>
+        <a href="#playlists">Playlists</a>
+        <a href="#settings">Settings</a>
+        <a href="#utility">Utility</a>
+        <a href="#info">Information</a>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>Muzix</h1>
+            <p>High-quality music bot for Discord</p>
+        </header>
+
+        <!-- Playback -->
+        <section id="playback" class="category-section">
+            <h2 class="category-title">🎵 Music Playback</h2>
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/join</span>
+                        <button class="copy-btn" onclick="copyCommand('/join')">Copy</button>
+                    </div>
+                    <p class="command-description">Make the bot join your voice channel</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/play</span>
+                        <button class="copy-btn" onclick="copyCommand('/play')">Copy</button>
+                    </div>
+                    <p class="command-description">Play a song or add it to the queue</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/pause</span>
+                        <button class="copy-btn" onclick="copyCommand('/pause')">Copy</button>
+                    </div>
+                    <p class="command-description">Pause the currently playing song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/resume</span>
+                        <button class="copy-btn" onclick="copyCommand('/resume')">Copy</button>
+                    </div>
+                    <p class="command-description">Resume the paused song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/skip</span>
+                        <button class="copy-btn" onclick="copyCommand('/skip')">Copy</button>
+                    </div>
+                    <p class="command-description">Skip the current song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/back</span>
+                        <button class="copy-btn" onclick="copyCommand('/back')">Copy</button>
+                    </div>
+                    <p class="command-description">Play the previous song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/stop</span>
+                        <button class="copy-btn" onclick="copyCommand('/stop')">Copy</button>
+                    </div>
+                    <p class="command-description">Stop music and clear the queue</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/disconnect</span>
+                        <button class="copy-btn" onclick="copyCommand('/disconnect')">Copy</button>
+                    </div>
+                    <p class="command-description">Disconnect the bot from voice channel</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/nowplaying</span>
+                        <button class="copy-btn" onclick="copyCommand('/nowplaying')">Copy</button>
+                    </div>
+                    <p class="command-description">Show the currently playing song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/forward</span>
+                        <button class="copy-btn" onclick="copyCommand('/forward')">Copy</button>
+                    </div>
+                    <p class="command-description">Skip forward in the current song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/backward</span>
+                        <button class="copy-btn" onclick="copyCommand('/backward')">Copy</button>
+                    </div>
+                    <p class="command-description">Skip backward in the current song</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Queue -->
+        <section id="queue" class="category-section">
+            <h2 class="category-title">📜 Queue Management</h2>
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/queue</span>
+                        <button class="copy-btn" onclick="copyCommand('/queue')">Copy</button>
+                    </div>
+                    <p class="command-description">Show the current song queue</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/shuffle</span>
+                        <button class="copy-btn" onclick="copyCommand('/shuffle')">Copy</button>
+                    </div>
+                    <p class="command-description">Shuffle the queue order</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/clear</span>
+                        <button class="copy-btn" onclick="copyCommand('/clear')">Copy</button>
+                    </div>
+                    <p class="command-description">Clear the current queue</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/remove</span>
+                        <button class="copy-btn" onclick="copyCommand('/remove')">Copy</button>
+                    </div>
+                    <p class="command-description">Remove a song from queue</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/move</span>
+                        <button class="copy-btn" onclick="copyCommand('/move')">Copy</button>
+                    </div>
+                    <p class="command-description">Move a track to a different position in the queue</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites -->
+        <section id="favorites" class="category-section">
+            <h2 class="category-title">❤️ Favourites</h2>
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/favoriteadd</span>
+                        <button class="copy-btn" onclick="copyCommand('/favoriteadd')">Copy</button>
+                    </div>
+                    <p class="command-description">Add a song to your favorites</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/favoritelist</span>
+                        <button class="copy-btn" onclick="copyCommand('/favoritelist')">Copy</button>
+                    </div>
+                    <p class="command-description">Show your favorite songs</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/favoriteplay</span>
+                        <button class="copy-btn" onclick="copyCommand('/favoriteplay')">Copy</button>
+                    </div>
+                    <p class="command-description">Play all songs from your favorites</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/favoriteremove</span>
+                        <button class="copy-btn" onclick="copyCommand('/favoriteremove')">Copy</button>
+                    </div>
+                    <p class="command-description">Remove a song from your favorites</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playlists -->
+        <section id="playlists" class="category-section">
+            <h2 class="category-title">📂 Playlists</h2>
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistcreate</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistcreate')">Copy</button>
+                    </div>
+                    <p class="command-description">Create a new empty playlist</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistsave</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistsave')">Copy</button>
+                    </div>
+                    <p class="command-description">Save the current queue as a playlist</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistload</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistload')">Copy</button>
+                    </div>
+                    <p class="command-description">Clear the queue and load a playlist</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistappend</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistappend')">Copy</button>
+                    </div>
+                    <p class="command-description">Add songs from a playlist to the current queue</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistlist</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistlist')">Copy</button>
+                    </div>
+                    <p class="command-description">Show all of your saved playlists</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistdelete</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistdelete')">Copy</button>
+                    </div>
+                    <p class="command-description">Delete one of your playlists</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistrename</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistrename')">Copy</button>
+                    </div>
+                    <p class="command-description">Rename one of your playlists</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistshare</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistshare')">Copy</button>
+                    </div>
+                    <p class="command-description">Share a playlist with others</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlistimport</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlistimport')">Copy</button>
+                    </div>
+                    <p class="command-description">Import playlist from share code or Spotify URL</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlisttrackadd</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlisttrackadd')">Copy</button>
+                    </div>
+                    <p class="command-description">Add a single song to one of your playlists</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlisttracklist</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlisttracklist')">Copy</button>
+                    </div>
+                    <p class="command-description">Show the list of tracks in a playlist</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/playlisttrackremove</span>
+                        <button class="copy-btn" onclick="copyCommand('/playlisttrackremove')">Copy</button>
+                    </div>
+                    <p class="command-description">Remove a track from one of your playlists</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings -->
+        <section id="settings" class="category-section">
+            <h2 class="category-title">⚙️ Settings & Filters</h2>
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/filter</span>
+                        <button class="copy-btn" onclick="copyCommand('/filter')">Copy</button>
+                    </div>
+                    <p class="command-description">Apply audio filter (equalizer)</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/loop</span>
+                        <button class="copy-btn" onclick="copyCommand('/loop')">Copy</button>
+                    </div>
+                    <p class="command-description">Set repeat mode</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/autoplay</span>
+                        <button class="copy-btn" onclick="copyCommand('/autoplay')">Copy</button>
+                    </div>
+                    <p class="command-description">Enable or disable autoplay</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/volume</span>
+                        <button class="copy-btn" onclick="copyCommand('/volume')">Copy</button>
+                    </div>
+                    <p class="command-description">Set music volume</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/seek</span>
+                        <button class="copy-btn" onclick="copyCommand('/seek')">Copy</button>
+                    </div>
+                    <p class="command-description">Seek to a specific time in the current song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/247</span>
+                        <button class="copy-btn" onclick="copyCommand('/247')">Copy</button>
+                    </div>
+                    <p class="command-description">Toggle 24/7 mode</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/setprefix</span>
+                        <button class="copy-btn" onclick="copyCommand('/setprefix')">Copy</button>
+                    </div>
+                    <p class="command-description">Set a custom prefix for this server</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/resetprefix</span>
+                        <button class="copy-btn" onclick="copyCommand('/resetprefix')">Copy</button>
+                    </div>
+                    <p class="command-description">Reset the custom prefix back to default</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/changenode</span>
+                        <button class="copy-btn" onclick="copyCommand('/changenode')">Copy</button>
+                    </div>
+                    <p class="command-description">Switch the current player to a different Lavalink node</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utility -->
+        <section id="utility" class="category-section">
+            <h2 class="category-title">🛠️ Utility</h2>
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/profile</span>
+                        <button class="copy-btn" onclick="copyCommand('/profile')">Copy</button>
+                    </div>
+                    <p class="command-description">View your or another user's profile</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/avatar</span>
+                        <button class="copy-btn" onclick="copyCommand('/avatar')">Copy</button>
+                    </div>
+                    <p class="command-description">View a user's avatar in high quality</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/banner</span>
+                        <button class="copy-btn" onclick="copyCommand('/banner')">Copy</button>
+                    </div>
+                    <p class="command-description">View a user's banner in high quality</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information -->
+        <section id="info" class="category-section">
+            <h2 class="category-title">ℹ️ Information</h2>
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/lyrics</span>
+                        <button class="copy-btn" onclick="copyCommand('/lyrics')">Copy</button>
+                    </div>
+                    <p class="command-description">Show the lyrics of the currently playing song</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/ping</span>
+                        <button class="copy-btn" onclick="copyCommand('/ping')">Copy</button>
+                    </div>
+                    <p class="command-description">Check the bot's latency</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/stats</span>
+                        <button class="copy-btn" onclick="copyCommand('/stats')">Copy</button>
+                    </div>
+                    <p class="command-description">Show bot statistics and information</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-header">
+                        <span class="command-name">/help</span>
+                        <button class="copy-btn" onclick="copyCommand('/help')">Copy</button>
+                    </div>
+                    <p class="command-description">Show the help menu</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Muzix Bot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyCommand(command) {
+            navigator.clipboard.writeText(command).then(() => {
+                const btn = event.target;
+                const originalText = btn.innerText;
+                btn.innerText = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
